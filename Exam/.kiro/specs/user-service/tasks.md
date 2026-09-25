@@ -55,12 +55,12 @@ Ogni task produce codice committabile e compilabile; i task di test sono opziona
     - Compilare voce `user-service` in `services.yaml`
     - _Requirements: REQ-USR-E07.1–2, REQ-USR-P02.7_
 
-- [ ] 4. **Implement AbstractUserRepository and MemoryUserRepository**
+- [x] 4. **Implement AbstractUserRepository and MemoryUserRepository**
   - Definire `AbstractUserRepository(ABC)` in `repository.py` con i metodi astratti: `create`, `get_by_id`, `get_by_email`, `list_users(role, email, page, page_size) → (items, total)`, `update`, `delete`
   - Implementare `MemoryUserRepository` con dizionario Python `{uuid_str: user_dict}`, operazioni O(n) per lista/filtri
   - _Requirements: REQ-USR-P03, REQ-USR-F01_
 
-  - [ ] 4.1 Implement AbstractUserRepository interface and MemoryUserRepository
+  - [x] 4.1 Implement AbstractUserRepository interface and MemoryUserRepository
     - Scrivere `AbstractUserRepository` con ABC e metodi astratti documentati
     - Scrivere `MemoryUserRepository` con `dict` interno, implementare tutti i metodi inclusa paginazione e filtri
     - _Requirements: REQ-USR-P03.1, REQ-USR-P03.5_
