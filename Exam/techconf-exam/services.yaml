@@ -1,0 +1,66 @@
+# -----------------------------------------------------------------------------
+# services.example.yaml — manifest read by the acceptance suite
+# -----------------------------------------------------------------------------
+# Copy this file to `services.yaml` and declare ONLY the services you implemented.
+#
+#     cp services.example.yaml services.yaml
+#
+# For each declared service the suite:
+#   1. launches the process with `command`, from working directory `cwd`;
+#   2. injects environment variables:
+#        - PORT                     the port the service MUST listen on
+#        - USER_SERVICE_URL         e.g. http://localhost:15001
+#        - EVENT_SERVICE_URL        e.g. http://localhost:15002
+#        - REGISTRATION_SERVICE_URL e.g. http://localhost:15003
+#        - FEEDBACK_SERVICE_URL     e.g. http://localhost:15004
+#        - NOTIFICATION_SERVICE_URL e.g. http://localhost:15005
+#        - STORAGE_BACKEND          (optional) memory | json | sqlite
+#        - DATA_DIR                 (optional) directory for json/sqlite files
+#   3. waits until `GET {base_url}/health` returns 200;
+#   4. runs the tests, then terminates the process.
+#
+# A service NOT listed here is SKIPPED (its tests are not run and not failed).
+#
+# Notes:
+#   * Your service must ALWAYS read the port from the PORT env var — during
+#     acceptance the suite uses ports 15001-15005 (and 15101+ for resilience
+#     instances), not the development ports 5001-5005.
+#   * Inter-service URLs must be read from the *_SERVICE_URL env vars, never
+#     hard-coded.
+#   * `command` is run through the shell inside `cwd`. Prefer an explicit
+#     interpreter/entrypoint over relying on an activated virtualenv.
+# -----------------------------------------------------------------------------
+
+services:
+  # ------------------------------- mandatory -------------------------------
+  user:
+    # Working directory for the process (relative to the repository root).
+    cwd: services/user-service
+    # Start command. It must launch a server that listens on $PORT.
+    command: python -m app
+    # Optional: override the default health path (default: /health).
+    health_path: /health
+
+  event:
+    cwd: services/event-service
+    command: python -m app
+    health_path: /health
+
+  registration:
+    cwd: services/registration-service
+    command: python -m app
+    health_path: /health
+
+  # ------------------------------- optional --------------------------------
+  # Remove or comment out the services you did NOT implement so their tests
+  # are skipped instead of failing.
+
+  # feedback:
+  #   cwd: services/feedback-service
+  #   command: python -m app
+  #   health_path: /health
+
+  # notification:
+  #   cwd: services/notification-service
+  #   command: python -m app
+  #   health_path: /health
