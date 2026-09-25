@@ -1,0 +1,4 @@
+# file: C:\Users\angela.trentin\itt-marconi-workshops-ML2\Exam\techconf-exam\services\user-service\app\main.py
+# hypothesis_version: 6.131.15
+
+[200, '/health', '0.0.0.0', 'GET', 'REPO', '__main__', 'json', 'memory', 'ok', 'service', 'sqlite', 'status', 'user-service']

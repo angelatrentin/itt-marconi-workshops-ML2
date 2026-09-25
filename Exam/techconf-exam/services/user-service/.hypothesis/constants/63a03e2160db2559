@@ -1,0 +1,4 @@
+# file: C:\Users\angela.trentin\AppData\Roaming\Python\Python313\site-packages\pluggy\__init__.py
+# hypothesis_version: 6.131.15
+
+['HookCallError', 'HookCaller', 'HookImpl', 'HookRelay', 'HookimplMarker', 'HookimplOpts', 'HookspecMarker', 'HookspecOpts', 'PluggyWarning', 'PluginManager', 'Result', '__version__']

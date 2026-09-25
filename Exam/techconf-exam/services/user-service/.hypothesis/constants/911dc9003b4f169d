@@ -1,0 +1,4 @@
+# file: C:\Users\angela.trentin\AppData\Roaming\Python\Python313\site-packages\click\__init__.py
+# hypothesis_version: 6.131.15
+
+['BaseCommand', 'MultiCommand', 'OptionParser', '__version__', 'click', 'get_binary_stream', 'get_text_stream']

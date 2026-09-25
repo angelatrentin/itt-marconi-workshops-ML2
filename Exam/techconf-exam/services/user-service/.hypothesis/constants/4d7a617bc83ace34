@@ -1,0 +1,4 @@
+# file: C:\Users\angela.trentin\AppData\Roaming\Python\Python313\site-packages\_pytest\_py\error.py
+# hypothesis_version: 6.131.15
+
+[267, 'P', 'R', 'UnknownErrno%d', '[{}]: {}', '_', '__doc__', '__module__', 'errno', 'py.error', 'win32', '{}.{} {!r}: {} ']

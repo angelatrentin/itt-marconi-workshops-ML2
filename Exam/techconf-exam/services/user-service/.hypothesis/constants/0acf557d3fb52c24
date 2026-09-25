@@ -1,0 +1,4 @@
+# file: C:\Users\angela.trentin\AppData\Roaming\Python\Python313\site-packages\click\testing.py
+# hypothesis_version: 6.131.15
+
+['<stderr>', '<stdin>', '<stdout>', 'backslashreplace', 'fd', 'int | t.Any | None', 'okay', 'prog_name', 'r', 'read', 'replace', 'root', 'sys', 't.IO[t.Any]', 'tab', 'utf-8', 'w', 'win32']

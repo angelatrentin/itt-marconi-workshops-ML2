@@ -1,0 +1,4 @@
+# file: C:\Users\angela.trentin\AppData\Roaming\Python\Python313\site-packages\coverage\bytecode.py
+# hypothesis_version: 6.131.15
+
+['<string>', 'CACHE', 'EXTENDED_ARG', 'JUMP_BACKWARD', 'JUMP_FORWARD', 'RETURN_GENERATOR', 'RETURN_VALUE', '__annotate__', 'exec']

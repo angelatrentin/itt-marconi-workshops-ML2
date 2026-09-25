@@ -1,0 +1,4 @@
+# file: C:\Users\angela.trentin\AppData\Roaming\Python\Python313\site-packages\werkzeug\datastructures\auth.py
+# hypothesis_version: 6.131.15
+
+[':', '=', '_on_update', '_parameters', '_token', '_type', 'ascii', 'basic', 'digest', 'domain', 'nonce', 'opaque', 'password', 'qop', 'realm', 'username']

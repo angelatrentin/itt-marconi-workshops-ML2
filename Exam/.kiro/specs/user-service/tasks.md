@@ -65,31 +65,31 @@ Ogni task produce codice committabile e compilabile; i task di test sono opziona
     - Scrivere `MemoryUserRepository` con `dict` interno, implementare tutti i metodi inclusa paginazione e filtri
     - _Requirements: REQ-USR-P03.1, REQ-USR-P03.5_
 
-  - [ ]* 4.2 Write unit tests for MemoryUserRepository
+  - [x]* 4.2 Write unit tests for MemoryUserRepository
     - Scrivere `tests/unit/test_repository_memory.py`
     - Testare CRUD completo: `create`, `get_by_id`, `get_by_email`, `list_users` con filtro `role`/`email`, `update`, `delete`
     - Verificare che `get_by_id` ritorni `None` dopo `delete`
     - Aggiungere marker `@pytest.mark.req("REQ-USR-P03")`
     - _Requirements: REQ-USR-P03.1_
 
-- [ ] 5. **Implement JsonUserRepository**
+- [x] 5. **Implement JsonUserRepository**
   - Implementare `JsonUserRepository(data_dir: Path)` in `repository.py`
   - File dati: `{DATA_DIR}/users.json`; creazione automatica se assente (array vuoto `[]`)
   - Creazione automatica `DATA_DIR` con `os.makedirs(data_dir, exist_ok=True)`
   - Scrittura atomica: scrivi su `users.json.tmp`, poi `os.replace` sul file definitivo
   - _Requirements: REQ-USR-P03.2_
 
-  - [ ] 5.1 Implement JsonUserRepository with atomic writes
+  - [x] 5.1 Implement JsonUserRepository with atomic writes
     - Scrivere `JsonUserRepository` che carica il file all'avvio e salva atomicamente ad ogni scrittura
     - Implementare tutti i metodi dell'interfaccia con logica di filtro/paginazione in memoria dopo la lettura
     - _Requirements: REQ-USR-P03.2_
 
-  - [ ]* 5.2 Write unit tests for JsonUserRepository
+  - [x]* 5.2 Write unit tests for JsonUserRepository
     - Scrivere `tests/unit/test_repository_json.py` con fixture `tmp_path`
     - Testare stesso CRUD di `MemoryUserRepository`, più: verifica che il file `users.json.tmp` non rimanga dopo una scrittura, verifica che il file venga creato automaticamente
     - _Requirements: REQ-USR-P03.2_
 
-- [ ] 6. **Implement SqliteUserRepository**
+- [x] 6. **Implement SqliteUserRepository**
   - Implementare `SqliteUserRepository(data_dir: Path)` in `repository.py`
   - File dati: `{DATA_DIR}/users.db`; schema con `CREATE TABLE IF NOT EXISTS users (...)`
   - Usare esclusivamente `sqlite3` dalla libreria standard
@@ -97,35 +97,35 @@ Ogni task produce codice committabile e compilabile; i task di test sono opziona
   - Campi: `id TEXT PRIMARY KEY`, `first_name TEXT NOT NULL`, `last_name TEXT NOT NULL`, `email TEXT NOT NULL UNIQUE`, `company TEXT`, `role TEXT NOT NULL DEFAULT 'attendee'`, `created_at TEXT NOT NULL`, `updated_at TEXT NOT NULL`
   - _Requirements: REQ-USR-P03.3, REQ-USR-P03.6_
 
-  - [ ] 6.1 Implement SqliteUserRepository
+  - [x] 6.1 Implement SqliteUserRepository
     - Scrivere `SqliteUserRepository` con `sqlite3`, `CREATE TABLE IF NOT EXISTS`, implementare tutti i metodi
     - Gestire filtri con `WHERE` clause parametrizzata (no string interpolation)
     - Gestire paginazione con `LIMIT`/`OFFSET`
     - _Requirements: REQ-USR-P03.3, REQ-USR-P03.6_
 
-  - [ ]* 6.2 Write unit tests for SqliteUserRepository
+  - [x]* 6.2 Write unit tests for SqliteUserRepository
     - Scrivere `tests/unit/test_repository_sqlite.py` con fixture `tmp_path`
     - Testare stesso CRUD di `MemoryUserRepository`, più: verifica che la tabella `users` esista con le colonne attese
     - _Requirements: REQ-USR-P03.3_
 
-- [ ] 7. **Implement business.py — create_user and domain exceptions**
+- [x] 7. **Implement business.py — create_user and domain exceptions**
   - Scrivere le eccezioni di dominio `UserNotFound(Exception)` e `EmailAlreadyExists(Exception)`
   - Implementare `create_user(repo, data) -> dict`: normalizza `email.lower()`, verifica unicità con `repo.get_by_email`, genera `uuid.uuid4()`, imposta `role='attendee'` se assente, valorizza `created_at`/`updated_at` con timestamp ISO 8601 UTC
   - `business.py` non deve importare Flask
   - _Requirements: REQ-USR-B01, REQ-USR-B02, REQ-USR-F01, REQ-USR-F02_
 
-  - [ ] 7.1 Implement create_user and domain exceptions
+  - [x] 7.1 Implement create_user and domain exceptions
     - Scrivere eccezioni `UserNotFound`, `EmailAlreadyExists`
     - Scrivere `create_user` con normalizzazione email, unicità, UUID v4, timestamp
     - _Requirements: REQ-USR-B01.1, REQ-USR-B02.1, REQ-USR-F01.3–5, REQ-USR-F02.6_
 
-  - [ ]* 7.2 Write unit tests for create_user
+  - [x]* 7.2 Write unit tests for create_user
     - In `tests/unit/test_business.py`, usare `MemoryUserRepository` fresco per ogni test
     - Testare: creazione con successo, normalizzazione email (maiuscole → minuscolo), email duplicata → `EmailAlreadyExists`, role default → `attendee`, UUID nel risultato è valido v4
     - `@pytest.mark.req("REQ-USR-B01")`, `@pytest.mark.req("REQ-USR-B02")`
     - _Requirements: REQ-USR-B01, REQ-USR-B02, REQ-USR-F01_
 
-- [ ] 8. **Implement remaining business.py functions**
+- [x] 8. **Implement remaining business.py functions**
   - Implementare `get_user(repo, user_id) -> dict` — `repo.get_by_id` → `None` → raise `UserNotFound`
   - Implementare `list_users(repo, role, email, page, page_size) -> dict` — normalizza email filtro in minuscolo, chiama `repo.list_users`, restituisce dizionario `UserPage`
   - Implementare `replace_user(repo, user_id, data) -> dict` — full replace, `company→None` se assente, `role→attendee` se assente, aggiorna `updated_at`, verifica unicità email (self-update non è conflitto)
@@ -133,76 +133,76 @@ Ogni task produce codice committabile e compilabile; i task di test sono opziona
   - Implementare `delete_user(repo, user_id) -> None` — `repo.delete` → `False` → raise `UserNotFound`
   - _Requirements: REQ-USR-B01, REQ-USR-B02, REQ-USR-B03, REQ-USR-E03, REQ-USR-E04, REQ-USR-E05, REQ-USR-E06_
 
-  - [ ] 8.1 Implement get_user, list_users, replace_user, update_user, delete_user
+  - [x] 8.1 Implement get_user, list_users, replace_user, update_user, delete_user
     - Scrivere tutte e cinque le funzioni in `business.py`
     - Prestare attenzione alla semantica self-update (REQ-USR-B01.3) e al body vuoto in PATCH (REQ-USR-E05.2)
     - _Requirements: REQ-USR-B01.2–4, REQ-USR-B02.2–3, REQ-USR-B03.1–4, REQ-USR-E03, REQ-USR-E04, REQ-USR-E05, REQ-USR-E06_
 
-  - [ ]* 8.2 Write unit tests for get_user, list_users, replace_user, update_user, delete_user
+  - [x]* 8.2 Write unit tests for get_user, list_users, replace_user, update_user, delete_user
     - Aggiungere test in `tests/unit/test_business.py`
     - Testare: `get_user` con UUID inesistente → `UserNotFound`, `list_users` con filtro `role` e `email` (case-insensitive), `replace_user` self-update non è conflitto, `update_user` body `{}` → `updated_at` invariato, `delete_user` → `UserNotFound` alla seconda chiamata
     - `@pytest.mark.req("REQ-USR-B01")`, `@pytest.mark.req("REQ-USR-B03")`, `@pytest.mark.req("REQ-USR-E05")`
     - _Requirements: REQ-USR-B01.3, REQ-USR-B03, REQ-USR-E05.2, REQ-USR-E06_
 
-- [ ] 9. **Checkpoint — unit tests pass**
+- [x] 9. **Checkpoint — unit tests pass**
   - Eseguire `pytest services/user-service/tests/unit/ -q` e verificare che tutti i test passino.
   - Assicurarsi che tutti i test passino; chiedere all'utente se sorgono domande.
 
-- [ ] 10. **Implement routes.py — POST /api/v1/users**
+- [x] 10. **Implement routes.py — POST /api/v1/users**
   - Parsare il body JSON → `400 MALFORMED_JSON` se non parsabile
   - Validare struttura (campi obbligatori: `first_name`, `last_name`, `email`; tipi, lunghezze, formato email, `additionalProperties: false`, rifiuto del campo `id`) → `422 VALIDATION_ERROR`
   - Delegare a `business.create_user`; tradurre `EmailAlreadyExists` → `409 EMAIL_ALREADY_EXISTS`
   - Risposta `201` + header `Location: /api/v1/users/{id}` + body `User`
   - _Requirements: REQ-USR-E01, REQ-USR-F01.4, REQ-USR-F01.6, REQ-USR-F02, REQ-USR-P01_
 
-  - [ ] 10.1 Implement POST /api/v1/users in routes.py
+  - [x] 10.1 Implement POST /api/v1/users in routes.py
     - Scrivere il Flask route handler con parsing, validazione, delega a business, serializzazione risposta
     - Includere handler globale per `400 MALFORMED_JSON` (body non JSON)
     - _Requirements: REQ-USR-E01.1–8, REQ-USR-F01.4, REQ-USR-F01.6, REQ-USR-F02_
 
-- [ ] 11. **Implement routes.py — GET /api/v1/users**
+- [x] 11. **Implement routes.py — GET /api/v1/users**
   - Leggere query params `page` (default 1), `page_size` (default 20), `role`, `email`
   - Validare: `page ≥ 1`, `page_size ∈ [1,100]`, `role` in enum, `email` non vuota → `422 VALIDATION_ERROR`
   - Delegare a `business.list_users`; risposta `200` con schema `UserPage`
   - Caso `page` oltre l'ultima pagina → `items: []`, `total` corretto
   - _Requirements: REQ-USR-E02, REQ-USR-B03, REQ-USR-P01_
 
-  - [ ] 11.1 Implement GET /api/v1/users in routes.py
+  - [x] 11.1 Implement GET /api/v1/users in routes.py
     - Scrivere il Flask route handler con parsing e validazione query params, delega a business, serializzazione `UserPage`
     - _Requirements: REQ-USR-E02.1–6, REQ-USR-B03.5–6_
 
-- [ ] 12. **Implement routes.py — GET /api/v1/users/{id}**
+- [x] 12. **Implement routes.py — GET /api/v1/users/{id}**
   - Validare `{id}` come UUID v4 → `422 VALIDATION_ERROR` se non valido
   - Delegare a `business.get_user`; tradurre `UserNotFound` → `404 NOT_FOUND`
   - Risposta `200 User`
   - _Requirements: REQ-USR-E03, REQ-USR-P01_
 
-  - [ ] 12.1 Implement GET /api/v1/users/{id} in routes.py
+  - [x] 12.1 Implement GET /api/v1/users/{id} in routes.py
     - Scrivere il Flask route handler con validazione UUID, delega a business, gestione `UserNotFound`
     - Riusare la funzione di validazione UUID per tutti i route handler successivi
     - _Requirements: REQ-USR-E03.1–3_
 
-- [ ] 13. **Implement routes.py — PUT /api/v1/users/{id}**
+- [x] 13. **Implement routes.py — PUT /api/v1/users/{id}**
   - Validare `{id}` come UUID v4; parsare e validare il body (stessa validazione di POST)
   - Delegare a `business.replace_user`; tradurre `UserNotFound` → `404`, `EmailAlreadyExists` → `409`
   - Risposta `200 User` con `updated_at` aggiornato; `company→null` e `role→attendee` se omessi dal body
   - _Requirements: REQ-USR-E04, REQ-USR-P01_
 
-  - [ ] 13.1 Implement PUT /api/v1/users/{id} in routes.py
+  - [x] 13.1 Implement PUT /api/v1/users/{id} in routes.py
     - Scrivere il Flask route handler con validazione UUID + body (full replace), delega a business, serializzazione
     - _Requirements: REQ-USR-E04.1–6_
 
-- [ ] 14. **Implement routes.py — PATCH /api/v1/users/{id}**
+- [x] 14. **Implement routes.py — PATCH /api/v1/users/{id}**
   - Validare `{id}` come UUID v4; parsare e validare il body (tutti i campi opzionali, schema `UserUpdate`, `additionalProperties: false`)
   - Delegare a `business.update_user`; body `{}` → `200` invariato
   - Risposta `200 User`; `updated_at` aggiornato solo se almeno un campo modificato
   - _Requirements: REQ-USR-E05, REQ-USR-P01_
 
-  - [ ] 14.1 Implement PATCH /api/v1/users/{id} in routes.py
+  - [x] 14.1 Implement PATCH /api/v1/users/{id} in routes.py
     - Scrivere il Flask route handler con validazione UUID + body (partial update), delega a business
     - _Requirements: REQ-USR-E05.1–8_
 
-- [ ] 15. **Implement routes.py — DELETE /api/v1/users/{id} and global error handlers**
+- [x] 15. **Implement routes.py — DELETE /api/v1/users/{id} and global error handlers**
   - Validare `{id}` come UUID v4; delegare a `business.delete_user`
   - Risposta `204` (no body); `UserNotFound` → `404 NOT_FOUND`
   - Registrare handler globale `MethodNotAllowed` → `405 METHOD_NOT_ALLOWED` + header `Allow`
@@ -210,22 +210,22 @@ Ogni task produce codice committabile e compilabile; i task di test sono opziona
   - Registrare handler globale per `422 VALIDATION_ERROR`
   - _Requirements: REQ-USR-E06, REQ-USR-E08, REQ-USR-P01_
 
-  - [ ] 15.1 Implement DELETE /api/v1/users/{id} and global Flask error handlers
+  - [x] 15.1 Implement DELETE /api/v1/users/{id} and global Flask error handlers
     - Scrivere il route handler DELETE con validazione UUID e gestione `UserNotFound`
     - Registrare `@app.errorhandler(MethodNotAllowed)` con header `Allow` e body standard
     - _Requirements: REQ-USR-E06.1–3, REQ-USR-E08.1–2, REQ-USR-P01.1–3_
 
-- [ ] 16. **Checkpoint — smoke test all endpoints**
+- [x] 16. **Checkpoint — smoke test all endpoints**
   - Eseguire `pytest services/user-service/tests/ -q` (tutti i test fino a qui) per verificare che tutto compili e le smoke test passino.
   - Assicurarsi che tutti i test passino; chiedere all'utente se sorgono domande.
 
-- [ ] 17. **Write integration tests (Flask test client)**
+- [x] 17. **Write integration tests (Flask test client)**
   - Scrivere `tests/integration/test_user_api.py` usando il Flask test client con backend `memory`
   - Coprire tutti i casi IT-U01–IT-U08 elencati sotto
   - Ogni test aggiunge marker `@pytest.mark.req("REQ-USR-*")`
   - _Requirements: REQ-USR-E01–E08, REQ-USR-B01–B03, REQ-USR-F01–F02_
 
-  - [ ]* 17.1 Write integration tests for all endpoints
+  - [x]* 17.1 Write integration tests for all endpoints
     - IT-U01: `POST /api/v1/users` → 201, header `Location` presente, body schema `User` valido
     - IT-U02: `POST` con campo obbligatorio mancante → 422 `VALIDATION_ERROR`
     - IT-U03: `POST` con email duplicata case-insensitive → 409 `EMAIL_ALREADY_EXISTS`
@@ -236,63 +236,63 @@ Ogni task produce codice committabile e compilabile; i task di test sono opziona
     - IT-U08: body JSON malformato → 400 `MALFORMED_JSON`; `GET /health` → 200 schema `Health`
     - _Requirements: REQ-USR-E01–E08, REQ-USR-B01.1–3, REQ-USR-B03.1_
 
-- [ ] 18. **Write contract tests**
+- [x] 18. **Write contract tests**
   - Scrivere `tests/contract/test_user_contract.py` usando `assert_matches_contract` da `contracts/validator.py`
   - Un test per endpoint/operazione: `POST /api/v1/users`, `GET /api/v1/users`, `GET /api/v1/users/{id}`, `PUT /api/v1/users/{id}`, `PATCH /api/v1/users/{id}`, `DELETE /api/v1/users/{id}`, `GET /health`
   - _Requirements: REQ-USR-F01, REQ-USR-P01_
 
-  - [ ]* 18.1 Write contract tests for all endpoints
+  - [x]* 18.1 Write contract tests for all endpoints
     - Importare `assert_matches_contract("user-service", METHOD, PATH, response)` per ogni endpoint
     - Verificare che le risposte di successo siano conformi agli schemi `User`, `UserPage`, `Health`, `Error`
     - _Requirements: REQ-USR-F01.1–7, REQ-USR-P01.1_
 
-- [ ] 19. **Write property-based tests (Hypothesis)**
+- [x] 19. **Write property-based tests (Hypothesis)**
   - Scrivere `tests/unit/test_properties.py` usando `hypothesis`
   - Implementare le 8 proprietà formali del design; `@settings(max_examples=100)` su ogni test
   - Ogni test deve includere il commento `# Feature: user-service, Property N: <titolo>`
   - _Requirements: REQ-USR-B01, REQ-USR-B02, REQ-USR-E02, REQ-USR-E03, REQ-USR-E06, REQ-USR-F01, REQ-USR-P03_
 
-  - [ ]* 19.1 Write PBT for Property 1 — round-trip creazione/lettura
+  - [x]* 19.1 Write PBT for Property 1 — round-trip creazione/lettura
     - Generare dati utente validi con `hypothesis`; verificare che POST→GET restituisca tutti i campi obbligatori con gli stessi valori
     - Commento: `# Feature: user-service, Property 1: round-trip creazione/lettura`
     - **Validates: Requirements REQ-USR-E01, REQ-USR-E03, REQ-USR-F01**
 
-  - [ ]* 19.2 Write PBT for Property 2 — normalizzazione email invariante
+  - [x]* 19.2 Write PBT for Property 2 — normalizzazione email invariante
     - Generare email con `st.emails()` con case arbitrario; verificare che la risposta contenga sempre `email.lower()`
     - Commento: `# Feature: user-service, Property 2: normalizzazione email invariante`
     - **Validates: Requirements REQ-USR-B02**
 
-  - [ ]* 19.3 Write PBT for Property 3 — unicità email globale (case-insensitive)
+  - [x]* 19.3 Write PBT for Property 3 — unicità email globale (case-insensitive)
     - Creare un utente, tentare di crearne un secondo con la stessa email in varianti di case → 409; verificare che mai due utenti abbiano la stessa email normalizzata
     - Commento: `# Feature: user-service, Property 3: unicità email globale`
     - **Validates: Requirements REQ-USR-B01**
 
-  - [ ]* 19.4 Write PBT for Property 4 — UUID v4 generato lato server
+  - [x]* 19.4 Write PBT for Property 4 — UUID v4 generato lato server
     - Verificare che l'`id` nella risposta POST sia un UUID v4 valido; se il body include un campo `id` → 422
     - Commento: `# Feature: user-service, Property 4: UUID v4 server-side`
     - **Validates: Requirements REQ-USR-F01.3, REQ-USR-F01.4**
 
-  - [ ]* 19.5 Write PBT for Property 5 — consistenza paginazione
+  - [x]* 19.5 Write PBT for Property 5 — consistenza paginazione
     - Con un dataset di N utenti e `page_size` arbitrario, verificare che la somma degli elementi su tutte le pagine coincida con `total`
     - Commento: `# Feature: user-service, Property 5: consistenza paginazione`
     - **Validates: Requirements REQ-USR-E02**
 
-  - [ ]* 19.6 Write PBT for Property 6 — filtro per role
+  - [x]* 19.6 Write PBT for Property 6 — filtro per role
     - Creare utenti con role misti, filtrare per ogni role valido; verificare che tutti gli item restituiti abbiano esattamente quel role
     - Commento: `# Feature: user-service, Property 6: filtro per role`
     - **Validates: Requirements REQ-USR-B03.1**
 
-  - [ ]* 19.7 Write PBT for Property 7 — eliminazione rende l'id irraggiungibile
+  - [x]* 19.7 Write PBT for Property 7 — eliminazione rende l'id irraggiungibile
     - Creare un utente, eliminarlo; verificare che GET, PUT, PATCH, DELETE sullo stesso id restituiscano tutti 404
     - Commento: `# Feature: user-service, Property 7: eliminazione irraggiungibile`
     - **Validates: Requirements REQ-USR-E06**
 
-  - [ ]* 19.8 Write PBT for Property 8 — intercambiabilità backend
+  - [x]* 19.8 Write PBT for Property 8 — intercambiabilità backend
     - Eseguire la stessa sequenza CRUD su `MemoryUserRepository`, `JsonUserRepository` (tmp_path) e `SqliteUserRepository` (tmp_path); verificare che i risultati osservabili siano identici
     - Commento: `# Feature: user-service, Property 8: intercambiabilità backend`
     - **Validates: Requirements REQ-USR-P03**
 
-- [ ] 20. **Final checkpoint — all tests pass with coverage ≥ 80%**
+- [x] 20. **Final checkpoint — all tests pass with coverage ≥ 80%**
   - Eseguire `pytest services/user-service/tests/ --cov=services/user-service/app --cov-report=term-missing -q`
   - Verificare coverage ≥ 80%; correggere eventuali failing test prima di procedere.
   - Assicurarsi che tutti i test passino; chiedere all'utente se sorgono domande.

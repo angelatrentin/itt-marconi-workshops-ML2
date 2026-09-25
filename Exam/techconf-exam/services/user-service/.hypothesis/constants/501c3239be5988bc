@@ -1,0 +1,4 @@
+# file: C:\Users\angela.trentin\AppData\Roaming\Python\Python313\site-packages\werkzeug\datastructures\accept.py
+# hypothesis_version: 6.131.15
+
+['*', ',', ', ', '/', '/|(?:\\s*;\\s*)', '[_-]', 'application/json', 'application/xml', 'text/html']

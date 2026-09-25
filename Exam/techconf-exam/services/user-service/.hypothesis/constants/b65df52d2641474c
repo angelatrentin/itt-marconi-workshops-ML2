@@ -1,0 +1,4 @@
+# file: C:\Users\angela.trentin\AppData\Roaming\Python\Python313\site-packages\_pytest\compat.py
+# hypothesis_version: 6.131.15
+
+[100, 127, 128, '%s:%d', 'DEFAULT', '\\n', '\\r', '\\t', '__func__', '__get__', '__pytest_wrapped__', '__wrapped__', '_is_coroutine', 'ascii', 'backslashreplace', 'emscripten', 'mock', 'patchings', 'unicode_escape', 'unittest.mock', 'win32']

@@ -1,0 +1,4 @@
+# file: C:\Users\angela.trentin\AppData\Roaming\Python\Python313\site-packages\coverage\core.py
+# hypothesis_version: 6.131.15
+
+['COVERAGE_CORE', '__file__', 'ctrace', 'eventlet', 'gevent', 'greenlet', 'in core.py', 'no-ctracer', 'no-sysmon', 'pytrace', 'sysmon', 'unknown']

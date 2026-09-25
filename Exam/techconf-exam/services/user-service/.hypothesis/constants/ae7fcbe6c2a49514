@@ -1,0 +1,4 @@
+# file: C:\Users\angela.trentin\AppData\Roaming\Python\Python313\site-packages\werkzeug\security.py
+# hypothesis_version: 6.131.15
+
+[132, 1000000, '$', '.', '..', '../', '/', '123456789¹²³', ':', 'AUX', 'CON', 'CONIN$', 'CONOUT$', 'NUL', 'PRN', 'nt', 'pbkdf2', 'scrypt', 'sha256']

@@ -1,0 +1,4 @@
+# file: C:\Users\angela.trentin\AppData\Roaming\Python\Python313\site-packages\werkzeug\datastructures\file_storage.py
+# hypothesis_version: 6.131.15
+
+[16384, '<', '>', 'Content-Length', 'Content-Type', '__fspath__', '_file', '_parsed_content_type', 'content-length', 'content-type', 'name', 'rb', 'wb']

@@ -1,0 +1,4 @@
+# file: C:\Users\angela.trentin\AppData\Roaming\Python\Python313\site-packages\coverage\patch.py
+# hypothesis_version: 6.131.15
+
+['COVERAGE_CORE', 'PATH', 'PYTHONPYCACHEPREFIX', 'Patching _exit', 'Patching execv', 'Patching fork', 'Patching subprocess', '_exit', 'e', 'execv', 'execve', 'fork', 'patch', 'subprocess']

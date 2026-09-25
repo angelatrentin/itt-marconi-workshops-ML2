@@ -1,0 +1,4 @@
+# file: C:\Users\angela.trentin\AppData\Roaming\Python\Python313\site-packages\flask\testing.py
+# hypothesis_version: 6.131.15
+
+['/', '127.0.0.1', ':', 'APPLICATION_ROOT', 'HTTP_USER_AGENT', 'PREFERRED_URL_SCHEME', 'REMOTE_ADDR', 'SERVER_NAME', 'Set-Cookie', 'environ_base', 'localhost', 'obj', 'werkzeug']

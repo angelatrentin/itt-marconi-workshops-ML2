@@ -1,0 +1,4 @@
+# file: C:\Users\angela.trentin\itt-marconi-workshops-ML2\Exam\techconf-exam\contracts\validator.py
+# hypothesis_version: 6.131.15
+
+['#/', '$ref', '/', '<root>', '?', '[^/]+', '\\\\\\{[^/}]+\\\\\\}', 'anyOf', 'application/json', 'content', 'description', 'enum', 'event', 'event-service', 'event-service.yaml', 'feedback', 'feedback-service', 'headers', 'json', 'notification', 'notification-service', 'null', 'nullable', 'openapi', 'paths', 'r', 'registration', 'registration-service', 'responses', 'schema', 'status_code', 'text', 'type', 'user', 'user-service', 'user-service.yaml', 'utf-8', '{']

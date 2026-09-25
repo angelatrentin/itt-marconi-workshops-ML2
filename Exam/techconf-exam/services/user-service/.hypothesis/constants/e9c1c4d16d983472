@@ -1,0 +1,4 @@
+# file: C:\Users\angela.trentin\AppData\Roaming\Python\Python313\site-packages\_pytest\mark\__init__.py
+# hypothesis_version: 6.131.15
+
+['--markers', '-k', '-m', ':', 'EXPRESSION', 'MARKEXPR', 'MARK_GEN', 'Mark', 'MarkDecorator', 'MarkGenerator', 'ParameterSet', '_names', 'fail_at_collect', 'function', 'general', 'keyword', 'linelist', 'markers', 'markexpr', 'skip', 'store', 'store_true', 'xfail']
