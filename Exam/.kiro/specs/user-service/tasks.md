@@ -24,13 +24,13 @@ Ogni task produce codice committabile e compilabile; i task di test sono opziona
     - Scrivere `pytest.ini` con `testpaths = tests` e registrazione del marker `req`
     - _Requirements: REQ-USR-P02, REQ-USR-P03_
 
-- [ ] 2. **Implement config.py**
+- [x] 2. **Implement config.py**
   - Leggere `PORT` (default `5001`, intero 1–65535), `STORAGE_BACKEND` (default `memory`, valori ammessi: `memory`/`json`/`sqlite`, `sys.exit(1)` su valore non valido), `DATA_DIR` (default `./data`)
   - Esporre la classe `Config` e la funzione `load_config() -> Config`
   - Validazione all'avvio: se `STORAGE_BACKEND` è invalido → messaggio su stderr + `sys.exit(1)`; se `STORAGE_BACKEND` è `json`/`sqlite` e `DATA_DIR` non è scrivibile/esistente → `sys.exit(1)`
   - _Requirements: REQ-USR-P02, REQ-USR-P03_
 
-  - [ ] 2.1 Implement config.py with env var reading and validation
+  - [x] 2.1 Implement config.py with env var reading and validation
     - Scrivere classe `Config` (dataclass o namedtuple) con attributi `port`, `storage_backend`, `data_dir`
     - Scrivere `load_config()` con lettura `os.environ`, conversione tipi, validazione, `sys.exit(1)` sui casi di errore
     - _Requirements: REQ-USR-P02.1–7, REQ-USR-P03.4_
