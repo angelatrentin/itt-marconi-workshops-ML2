@@ -2,14 +2,13 @@
   "version": "v1",
   "hooks": [
     {
-      "name": "hook",
+      "name": "onFileSave",
       "trigger": "PostFileSave",
+      "matcher": "services/./.\\.py$",
       "action": {
         "type": "command",
-        "command": "Quando salvo un file Python dentro services/<nome-servizio>/, esegui i test unitari di quel servizio con pytest e mostrami il risultato"
-      },
-      "matcher": "/services/*.py",
-      "enabled": true
+        "command": "pytest services/"
+      }
     }
   ]
 }
