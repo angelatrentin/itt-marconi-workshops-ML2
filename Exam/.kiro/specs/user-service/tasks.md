@@ -35,7 +35,7 @@ Ogni task produce codice committabile e compilabile; i task di test sono opziona
     - Scrivere `load_config()` con lettura `os.environ`, conversione tipi, validazione, `sys.exit(1)` sui casi di errore
     - _Requirements: REQ-USR-P02.1–7, REQ-USR-P03.4_
 
-  - [ ]* 2.2 Write unit tests for config.py
+  - [x] 2.2 Write unit tests for config.py
     - Scrivere `tests/unit/test_config.py` con `monkeypatch` per le variabili d'ambiente
     - Verificare valori di default, parsing porta, terminazione su `STORAGE_BACKEND` non valido
     - Aggiungere marker `@pytest.mark.req("REQ-USR-P02")`
