@@ -11,14 +11,14 @@ Ogni task produce codice committabile e compilabile; i task di test sono opziona
 
 ## Tasks
 
-- [ ] 1. **Set up project structure and dependencies**
+- [x] 1. **Set up project structure and dependencies**
   - Creare le cartelle `services/user-service/app/`, `services/user-service/tests/unit/`, `services/user-service/tests/integration/`, `services/user-service/tests/contract/`
   - Creare `services/user-service/requirements.txt` con le dipendenze runtime (`flask`, `requests`) e di test (`pytest`, `pytest-cov`, `responses`, `hypothesis`)
   - Creare `services/user-service/pytest.ini` con la configurazione minima (testpaths, markers `req`)
   - Creare i file `__init__.py` vuoti nelle cartelle `app/`, `tests/`, `tests/unit/`, `tests/integration/`, `tests/contract/`
   - _Requirements: REQ-USR-P02, REQ-USR-P03_
 
-  - [ ] 1.1 Create directory structure and requirements.txt
+  - [x] 1.1 Create directory structure and requirements.txt
     - Creare tutte le cartelle e i file `__init__.py`
     - Scrivere `requirements.txt` con versioni pinnate: `flask`, `requests`, `pytest`, `pytest-cov`, `responses`, `hypothesis`
     - Scrivere `pytest.ini` con `testpaths = tests` e registrazione del marker `req`
