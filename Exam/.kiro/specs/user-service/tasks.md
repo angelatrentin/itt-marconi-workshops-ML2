@@ -41,14 +41,14 @@ Ogni task produce codice committabile e compilabile; i task di test sono opziona
     - Aggiungere marker `@pytest.mark.req("REQ-USR-P02")`
     - _Requirements: REQ-USR-P02, REQ-USR-P03_
 
-- [ ] 3. **Implement main.py with /health endpoint and Flask bootstrap**
+- [x] 3. **Implement main.py with /health endpoint and Flask bootstrap**
   - Scrivere `create_app(repo) -> Flask` che registra le routes e il blueprint
   - Implementare `GET /health` → `200 {"status": "ok", "service": "user-service"}` direttamente in `main.py` o in `routes.py`
   - Scrivere il bootstrap: `config = load_config()` → `repo = select_repository(config)` → `app = create_app(repo)` → `app.run(...)`
   - Aggiornare `services.yaml` nella root del progetto con `cwd` e `command` per `user-service` (porta 5001)
   - _Requirements: REQ-USR-E07, REQ-USR-P02_
 
-  - [ ] 3.1 Implement main.py bootstrap and /health route
+  - [x] 3.1 Implement main.py bootstrap and /health route
     - Scrivere `create_app(repo)` con registrazione blueprint
     - Implementare route `GET /health` con risposta `{"status": "ok", "service": "user-service"}`
     - Scrivere logica di selezione repository in `main.py`
